@@ -1,0 +1,158 @@
+{
+  double mpi = 139.570;
+  //read g4 prediction
+  ifstream in;
+  in.open("../../sim/pion/XS_pi+_G4_H.out");
+  vector<double> g4Epi;
+  vector<double> g4ElXS;
+  vector<double> g4InElXS;
+
+  char line[1024];
+  while(1){
+    in.getline(line, 1024);
+    if (!in.good()) break;
+    if (line[0]=='-' || line[0] == '#' || line[4] == 'N') continue;
+    double x0, x1, x2, x3, x4, x5;
+    sscanf(line, "%lf %lf %lf %lf %lf", &x0, &x1, &x2, &x3, &x4);
+    //cout<<x0<<" "<<x1<<" "<<x2<<" "<<x3<<" "<<x4<<endl;
+    g4Epi.push_back(x1);
+    g4ElXS.push_back(x2*1e3);
+    g4InElXS.push_back(x4*1e3);
+  }
+
+  TGraph *grg4piElXS = new TGraph(g4Epi.size(), &g4Epi[0], &g4ElXS[0]);
+  grg4piElXS->SetLineColor(2);
+  grg4piElXS->Draw("ac");
+  gPad->SetLogx();
+  gPad->SetLogy();
+
+  TGraph *grg4piInElXS = new TGraph(g4Epi.size(), &g4Epi[0], &g4InElXS[0]);
+  grg4piInElXS->SetLineColor(4);
+  grg4piInElXS->Draw("c");
+
+  
+  //read data 
+  in.close();
+  in.clear();
+  in.open("../../data/pion/pi_H_elastic_PhysRev.134.B1062.txt");
+  vector<double> dataEpi_pr134_b1062;
+  vector<double> dataElXS_pr134_b1062;
+  vector<double> dataElXSerr_pr134_b1062;
+  while(1){
+    in.getline(line, 1024);
+    if (!in.good()) break;
+    double x0, x1, x2;
+    sscanf(line, "%lf %lf %lf", &x0, &x1, &x2);
+    dataEpi_pr134_b1062.push_back(x0);
+    dataElXS_pr134_b1062.push_back(x1);
+    dataElXSerr_pr134_b1062.push_back(x2);
+  }
+
+  TGraphErrors *grdatapiElXS_pr134_b1062 = new TGraphErrors(dataEpi_pr134_b1062.size(), &dataEpi_pr134_b1062[0], &dataElXS_pr134_b1062[0], 0, &dataElXSerr_pr134_b1062[0]);
+  grdatapiElXS_pr134_b1062->SetMarkerStyle(20);
+  grdatapiElXS_pr134_b1062->Draw("pe");
+
+  in.close();
+  in.clear();
+  in.open("../../data/pion/pi_H_elastic_PhysRevLett.11.425.txt");
+  vector<double> dataEpi_prl11_425;
+  vector<double> dataElXS_prl11_425;
+  vector<double> dataElXSerr_prl11_425;
+  while(1){
+    in.getline(line, 1024);
+    if (!in.good()) break;
+    double x0, x1, x2;
+    sscanf(line, "%lf %lf %lf", &x0, &x1, &x2);
+    double ke = sqrt(pow(x0*1e3,2) + mpi*mpi)-mpi;
+    dataEpi_prl11_425.push_back(ke);
+    dataElXS_prl11_425.push_back(x1);
+    dataElXSerr_prl11_425.push_back(x2);
+  }
+
+  TGraphErrors *grdatapiElXS_prl11_425 = new TGraphErrors(dataEpi_prl11_425.size(), &dataEpi_prl11_425[0], &dataElXS_prl11_425[0], 0, &dataElXSerr_prl11_425[0]);
+  grdatapiElXS_prl11_425->SetMarkerStyle(20);
+  grdatapiElXS_prl11_425->Draw("pe");
+
+  in.close();
+  in.clear();
+  in.open("../../data/pion/pi_H_elastic_PhysRev.137.B1115.txt");
+  vector<double> dataEpi_pr137_b1115;
+  vector<double> dataElXS_pr137_b1115;
+  vector<double> dataElXSerr_pr137_b1115;
+  while(1){
+    in.getline(line, 1024);
+    if (!in.good()) break;
+    double x0, x1, x2;
+    sscanf(line, "%lf %lf %lf", &x0, &x1, &x2);
+    dataEpi_pr137_b1115.push_back(x0);
+    dataElXS_pr137_b1115.push_back(x1);
+    dataElXSerr_pr137_b1115.push_back(x2);
+  }
+
+  TGraphErrors *grdatapiElXS_pr137_b1115 = new TGraphErrors(dataEpi_pr137_b1115.size(), &dataEpi_pr137_b1115[0], &dataElXS_pr137_b1115[0], 0, &dataElXSerr_pr137_b1115[0]);
+  grdatapiElXS_pr137_b1115->SetMarkerStyle(20);
+  grdatapiElXS_pr137_b1115->Draw("pe");
+
+  in.close();
+  in.clear();
+  in.open("../../data/pion/pi_H_total_PhysRev.138.B913.txt");
+  vector<double> dataEpi_pr138_b913;
+  vector<double> dataTotXS_pr138_b913;
+  vector<double> dataTotXSerr_pr138_b913;
+  while(1){
+    in.getline(line, 1024);
+    if (!in.good()) break;
+    double x0, x1, x2;
+    sscanf(line, "%lf %lf %lf", &x0, &x1, &x2);
+    double ke = sqrt(pow(x0*1e3,2) + mpi*mpi)-mpi;
+    dataEpi_pr138_b913.push_back(ke);
+    dataTotXS_pr138_b913.push_back(x1);
+    dataTotXSerr_pr138_b913.push_back(x2);
+  }
+
+  TGraphErrors *grdatapiTotXS_pr138_b913 = new TGraphErrors(dataEpi_pr138_b913.size(), &dataEpi_pr138_b913[0], &dataTotXS_pr138_b913[0], 0, &dataTotXSerr_pr138_b913[0]);
+  grdatapiTotXS_pr138_b913->SetMarkerStyle(20);
+  grdatapiTotXS_pr138_b913->Draw("pe");
+
+  in.close();
+  in.clear();
+  in.open("../../data/pion/pi_H_total_PhysRevLett.10.262.txt");
+  vector<double> dataEpi_prl_10_262;
+  vector<double> dataTotXS_prl_10_262;
+  vector<double> dataTotXSerr_prl_10_262;
+  while(1){
+    in.getline(line, 1024);
+    if (!in.good()) break;
+    double x0, x1, x2;
+    sscanf(line, "%lf %lf %lf", &x0, &x1, &x2);
+    double ke = sqrt(pow(x0*1e3,2) + mpi*mpi)-mpi;
+    dataEpi_prl_10_262.push_back(ke);
+    dataTotXS_prl_10_262.push_back(x1);
+    dataTotXSerr_prl_10_262.push_back(x2);
+  }
+
+  TGraphErrors *grdatapiTotXS_prl_10_262 = new TGraphErrors(dataEpi_prl_10_262.size(), &dataEpi_prl_10_262[0], &dataTotXS_prl_10_262[0], 0, &dataTotXSerr_prl_10_262[0]);
+  grdatapiTotXS_prl_10_262->SetMarkerStyle(20);
+  grdatapiTotXS_prl_10_262->Draw("pe");
+
+  in.close();
+  in.clear();
+  in.open("../../data/pion/pi_H_total_PhysRevLett.14.1031.txt");
+  vector<double> dataEpi_prl_14_1031;
+  vector<double> dataTotXS_prl_14_1031;
+  vector<double> dataTotXSerr_prl_14_1031;
+  while(1){
+    in.getline(line, 1024);
+    if (!in.good()) break;
+    double x0, x1, x2;
+    sscanf(line, "%lf %lf %lf", &x0, &x1, &x2);
+    dataEpi_prl_14_1031.push_back(x0);
+    dataTotXS_prl_14_1031.push_back(x1);
+    dataTotXSerr_prl_14_1031.push_back(x2);
+  }
+
+  TGraphErrors *grdatapiTotXS_prl_14_1031 = new TGraphErrors(dataEpi_prl_14_1031.size(), &dataEpi_prl_14_1031[0], &dataTotXS_prl_14_1031[0], 0, &dataTotXSerr_prl_14_1031[0]);
+  grdatapiTotXS_prl_14_1031->SetMarkerStyle(20);
+  grdatapiTotXS_prl_14_1031->Draw("pe");
+
+}
