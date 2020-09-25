@@ -5,7 +5,7 @@
   in.open("../../sim/pion/XS_pi+_G4_H.out");
   vector<double> g4Epi;
   vector<double> g4ElXS;
-  vector<double> g4TotElXS;
+  vector<double> g4TotXS;
 
   char line[1024];
   while(1){
@@ -17,7 +17,7 @@
     //cout<<x0<<" "<<x1<<" "<<x2<<" "<<x3<<" "<<x4<<endl;
     g4Epi.push_back(x1);
     g4ElXS.push_back(x2*1e3);
-    g4TotElXS.push_back(x4*1e3);
+    g4TotXS.push_back(x4*1e3);
   }
 
   TCanvas *c1 = new TCanvas("c1","c1");
@@ -32,7 +32,7 @@
   gPad->SetLogx();
   //gPad->SetLogy();
 
-  TGraph *grg4piTotElXS = new TGraph(g4Epi.size(), &g4Epi[0], &g4TotElXS[0]);
+  TGraph *grg4piTotElXS = new TGraph(g4Epi.size(), &g4Epi[0], &g4TotXS[0]);
   grg4piTotElXS->SetLineColor(4);
   grg4piTotElXS->SetLineWidth(4);
   grg4piTotElXS->Draw("c");
