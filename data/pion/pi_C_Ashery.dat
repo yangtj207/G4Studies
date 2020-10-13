@@ -1,0 +1,9 @@
+reference: https://journals.aps.org/prc/pdf/10.1103/PhysRevC.23.2173
+pi+ on Carbon: Reaction cross-section is calculated by Ajib using ReactionXS=CX+ABS+Inel from the paper 
+Pion_Energy(MeV) Elastic(mb) Err_elastic Reaction(Inelastic+CX+ABS)(mb) err_reaction Total(mb) error_Total(mb)
+85		 178	     18		 287				30.02	     465       12
+125		 221	     22		 417				40.22	     638       10
+165		 223	     22		 447				43.28	     670       8
+205		 214	     21		 412				58.67	     626       6
+245		 186	     20		 366				37.20	     552       7
+315		 136	     14		 309				27.20	     445       7

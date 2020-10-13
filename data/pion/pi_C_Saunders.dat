@@ -1,0 +1,11 @@
+reference:https://journals.aps.org/prc/pdf/10.1103/PhysRevC.53.1745
+pi+ on C: Note::Elastic cross-section is calculated by Ajib using, ElasticXS=Total-Reaction from the paper
+Pion_Energy(MeV) Elastic(mb) Err_elastic Reaction(Inelastic+CX+ABS)(mb) err_reaction Total(mb) error_Total(mb)
+42.0		 89	     23		 125				14	     214       18
+45.0		 93	     24		 135				15	     228       19
+46.5		 95	     24		 137				14	     232       19
+48.0		 98	     34		 140				20	     238       27
+49.5		 101	     31		 158				19	     259       25
+50.0		 96 	     24		 152				14	     248       20      
+54.0		 106	     24		 147				14	     253       20
+65.0	  	 127	     29		 202				17	     329       24
