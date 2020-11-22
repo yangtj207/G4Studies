@@ -47,6 +47,8 @@ void norm()
   hist1->GetXaxis()->SetTitle("#theta");
   hist1->Draw("hist c");
   gPad->SetLogy();
+  gPad->SetGridx();
+  gPad->SetGridy();
 
   double sigmaE = 0;
   for (int i = 1; i<=hist1->GetNbinsX(); ++i){
@@ -90,8 +92,8 @@ void norm()
   TLegend *leg = new TLegend(0.5,0.6,0.9,0.9);
   leg->SetFillStyle(0);
   leg->AddEntry(hist1,"Geant4 v4_10_6_p01","l");
-  leg->AddEntry(gr_prl_18_1200,"Phys.Rev.Lett.18, 1200, (1967)","ple");
-  leg->AddEntry(gr,"Phys.Rept.42, 89, (1978)","ple");
+  leg->AddEntry(gr_prl_18_1200,"Phys.Rev.Lett.18, 1200, (1967)","pe");
+  leg->AddEntry(gr,"Phys.Rept.42, 89, (1978)","pe");
   leg->Draw();
 
   c1->Print("../../figures/proton/pC1GeVdiff.png");
