@@ -16,7 +16,7 @@ const double avogadro=6.02214e23;
 const double rho=2.;
 const double A = 12.011;
 const double nevts = 10000000000;
-const double thickness=1;
+const double thickness=0.5;
 const double convert=A/(avogadro*rho*thickness);
 double sterad(double tmin,double tmax)
 {
