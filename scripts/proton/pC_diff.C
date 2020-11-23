@@ -50,8 +50,8 @@
 
   TLegend *leg = new TLegend(0.4,0.6,0.9,0.9);
   leg->SetFillStyle(0);
-  leg->AddEntry(diff_FTFP_BERT,"Geant4 v4_10_6_p01 FTFP_BERT","l");
-  leg->AddEntry(diff_FTFP_BERT_TRV,"Geant4 v4_10_6_p01 FTFP_BERT_TRV","l");
+  leg->AddEntry(diff_FTFP_BERT,"Geant4 v4_10_6_p01 hElasticCHIPS","l");
+  leg->AddEntry(diff_FTFP_BERT_TRV,"Geant4 v4_10_6_p01 DiffuseElastic","l");
   leg->AddEntry(gr_prl_18_1200,"Phys.Rev.Lett.18, 1200, (1967)","pe");
   leg->AddEntry(gr,"Phys.Rept.42, 89, (1978)","pe");
   leg->Draw();
