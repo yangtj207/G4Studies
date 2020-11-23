@@ -9,7 +9,7 @@
   TH1D *diff_FTFP_BERT_TRV = (TH1D*)f1_FTFP_BERT_TRV.Get("diff");
 
   diff_FTFP_BERT->Draw("hist c");
-  diff_FTFP_BERT_TRV->SetLineColor(2);
+  diff_FTFP_BERT_TRV->SetLineColor(3);
   diff_FTFP_BERT_TRV->Draw("hist c same");
 
   gPad->SetLogy();
